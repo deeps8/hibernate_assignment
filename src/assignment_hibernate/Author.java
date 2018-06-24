@@ -15,8 +15,8 @@ public class Author {
 	
 	private int age;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="authors" )
-//	@JoinColumn(name="b_ids")
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="b_ids")
 	private Set<Book> books= new HashSet<>();
 	
 	public int getAid() {
