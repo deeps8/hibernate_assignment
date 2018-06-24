@@ -29,7 +29,7 @@ public class MainApp {
 		 
 		 
 			 Book b = new Book();
-			 b.setBid(5);
+			 b.setBid(15);
 			 
 			 System.out.println("Enter book name :");
 			 b.setBname(in.next());
@@ -49,17 +49,17 @@ public class MainApp {
 			 System.out.println("Enter age of Author :");
 			 a.setAge(in.nextInt());
 			 
-			 a.setBooks(b);
-			 b.setAuthor(a);
+			 a.getBooks().add(b);
 			 
 			 
 			 session.save(a);
 			 session.save(b);
 			 
+			 
 			 a = (Author) session.get(Author.class, 1);
 			 System.out.println(a);
 			 
-			 Book b1 = (Book) session.get(Book.class, 5);
+			 Book b1 = (Book) session.get(Book.class, 15);
 			 b1.setBname("Second Book");
 			 
 			 session.update(b1);

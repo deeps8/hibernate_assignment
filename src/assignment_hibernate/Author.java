@@ -1,5 +1,7 @@
 package assignment_hibernate;
 
+import java.util.*;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,8 +15,9 @@ public class Author {
 	
 	private int age;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	private Book books;
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="b_ids")
+	private List<Book> books= new ArrayList<>();
 	
 	public int getAid() {
 		return aid;
@@ -40,17 +43,17 @@ public class Author {
 		this.age = age;
 	}
 
-	public Book getBooks() {
+	public List<Book> getBooks() {
 		return books;
 	}
 
-	public void setBooks(Book books) {
+	public void setBooks(List<Book> books) {
 		this.books = books;
 	}
 
 	@Override
 	public String toString() {
-		return "Author [aid=" + aid + ", name=" + name + ", age=" + age + ", books=" + books.getBname() + "]";
+		return "Author [aid=" + aid + ", name=" + name + ", age=" + age + ", books=" + books + "]";
 	}
 
 	
