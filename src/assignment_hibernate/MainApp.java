@@ -21,15 +21,21 @@ public class MainApp {
 		
 		ServiceRegistry reg = new ServiceRegistryBuilder().applySettings(con.getProperties()).buildServiceRegistry();
 		
-		SessionFactory sf = con.buildSessionFactory(reg); 		//interface so on object 
+		SessionFactory sf = con.buildSessionFactory(reg); 		//interface so no object 
 		
-		 Session session = sf.openSession();		//interface so no object 
+		Session session = sf.openSession();		//interface so no object 
 		 
-		 Transaction tx = session.beginTransaction();
+		Transaction tx = session.beginTransaction();
 		 
 		 
-		 for(int i=0;i<10;i++)
-		 {	 
+			 Book b = new Book();
+			 b.setBid(5);
+			 
+			 System.out.println("Enter book name :");
+			 b.setBname(in.next());
+			 
+			 session.save(b);
+		 
 			 AuthorName aname = new AuthorName();
 			 Author a = new Author();
 			 
@@ -39,21 +45,27 @@ public class MainApp {
 			 System.out.println("Enter Author Last name :");
 			 aname.setLname(in.next());
 			 
+			 a.setName(aname);
+			 
 			 System.out.println("Enter age of Author :");
 			 a.setAge(in.nextInt());
 			 
-			 a.setName(aname); 				// Author name is set here to author 
+			 a.setBooks(b);
 			 
 			 session.save(a);
 			 
+			 a = (Author) session.get(Author.class, 1);
+			 System.out.println(a);
 			 
-			 Book b = new Book();
+			 Book b1 = (Book) session.get(Book.class, 5);
+			 b1.setBname("Second Book");
 			 
-			 System.out.println("Entered book name : book-"+i+1);
-			 b.setBname("book-"+i+1);
+			 session.update(b1);
+			 session.save(b1);
 			 
-			 session.save(b);
-		 }
+			 System.out.println("Updating the book name");
+			 a = (Author) session.get(Author.class, 1);
+			 System.out.println(a);
 		 
 		 tx.commit();
 		 session.close();

@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Book {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+//	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int bid;
 	
 	private String Bname;
