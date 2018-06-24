@@ -14,7 +14,7 @@ public class Book {
 	private String Bname;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="a_ids")
+//	@JoinColumn(name="a_ids")
 	private Author authors;
 	
 	public int getBid() {
