@@ -10,6 +10,9 @@ public class Book {
 	private int bid;
 	
 	private String Bname;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Author authors ;
 
 	public int getBid() {
 		return bid;
@@ -26,11 +29,23 @@ public class Book {
 	public void setBname(String bname) {
 		Bname = bname;
 	}
+	
+	public Author getAuthor() {
+		return authors;
+	}
+
+	public void setAuthor(Author author) {
+		this.authors = author;
+	}
 
 	@Override
 	public String toString() {
-		return "Book [bid=" + bid + ", Bname=" + Bname + "]";
+		return "Book [bid=" + bid + ", Bname=" + Bname + ", authors=" + authors.getName() + "]";
 	}
+	
+	
+
+	
 	
 	
 

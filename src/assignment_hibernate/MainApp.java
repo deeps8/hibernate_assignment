@@ -34,7 +34,6 @@ public class MainApp {
 			 System.out.println("Enter book name :");
 			 b.setBname(in.next());
 			 
-			 session.save(b);
 		 
 			 AuthorName aname = new AuthorName();
 			 Author a = new Author();
@@ -51,8 +50,11 @@ public class MainApp {
 			 a.setAge(in.nextInt());
 			 
 			 a.setBooks(b);
+			 b.setAuthor(a);
+			 
 			 
 			 session.save(a);
+			 session.save(b);
 			 
 			 a = (Author) session.get(Author.class, 1);
 			 System.out.println(a);

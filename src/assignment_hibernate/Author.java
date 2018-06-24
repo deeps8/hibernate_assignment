@@ -14,7 +14,7 @@ public class Author {
 	private int age;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	private Book books = new Book();
+	private Book books;
 	
 	public int getAid() {
 		return aid;
@@ -50,8 +50,10 @@ public class Author {
 
 	@Override
 	public String toString() {
-		return "Author [aid=" + aid + ", name=" + name + ", age=" + age + ", books=" + books + "]";
+		return "Author [aid=" + aid + ", name=" + name + ", age=" + age + ", books=" + books.getBname() + "]";
 	}
+
+	
 
 	
 	
