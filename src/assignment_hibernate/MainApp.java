@@ -17,7 +17,7 @@ public class MainApp {
 		
 		Scanner in = new Scanner(System.in);
 		
-		Configuration con = new Configuration().configure().addAnnotatedClass(Author.class).addAnnotatedClass(Book.class);
+		Configuration con = new Configuration().configure().addAnnotatedClass(Author.class).addAnnotatedClass(Book.class).addAnnotatedClass(AuthorAddress.class);
 		
 		ServiceRegistry reg = new ServiceRegistryBuilder().applySettings(con.getProperties()).buildServiceRegistry();
 		
@@ -37,6 +37,9 @@ public class MainApp {
 		 
 			 AuthorName aname = new AuthorName();
 			 Author a = new Author();
+			 AuthorAddress add = new AuthorAddress();
+			 add.setAdd_id(2);
+			 add.setAddress("b-54/8 EVN delhi");
 			 
 			 System.out.println("Enter Author First name :");
 			 aname.setFname(in.next());
@@ -49,11 +52,13 @@ public class MainApp {
 			 System.out.println("Enter age of Author :");
 			 a.setAge(in.nextInt());
 			 
+			 add.getAuthors().add(a);
 			 b.getAuthors().add(a);
 			 a.getBooks().add(b);
 			 
 			 session.save(a);
 			 session.save(b);
+			 session.save(add);
 			 
 			 
 			 a = (Author) session.get(Author.class, 1);
@@ -68,6 +73,10 @@ public class MainApp {
 			 System.out.println("Updating the book name");
 			 a = (Author) session.get(Author.class, 1);
 			 System.out.println(a);
+			 
+			 System.out.println("Author Address");
+			 add = (AuthorAddress) session.get(AuthorAddress.class,2);
+			 System.out.println(add);
 		 
 		 tx.commit();
 		 session.close();
