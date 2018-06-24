@@ -49,8 +49,8 @@ public class MainApp {
 			 System.out.println("Enter age of Author :");
 			 a.setAge(in.nextInt());
 			 
+			 b.setAuthors(a);
 			 a.getBooks().add(b);
-			 
 			 
 			 session.save(a);
 			 session.save(b);

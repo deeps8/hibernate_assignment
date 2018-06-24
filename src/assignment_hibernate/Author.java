@@ -16,8 +16,8 @@ public class Author {
 	private int age;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name="b_ids")
-	private Set<Book> books= new HashSet<>();
+//	@JoinColumn(name="b_ids")
+	private List<Book> books= new ArrayList<>();
 	
 	public int getAid() {
 		return aid;
@@ -43,11 +43,11 @@ public class Author {
 		this.age = age;
 	}
 
-	public Set<Book> getBooks() {
+	public List<Book> getBooks() {
 		return books;
 	}
 
-	public void setBooks(Set<Book> books) {
+	public void setBooks(List<Book> books) {
 		this.books = books;
 	}
 
