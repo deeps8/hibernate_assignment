@@ -15,7 +15,7 @@ public class Author {
 	
 	private int age;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL)
 //	@JoinColumn(name="b_ids")
 	private List<Book> books= new ArrayList<>();
 	
@@ -53,7 +53,7 @@ public class Author {
 
 	@Override
 	public String toString() {
-		return "Author [aid=" + aid + ", name=" + name + ", age=" + age + ", books=" + books + "]";
+		return "Author [aid=" + aid + ", name=" + name + ", age=" + age + ", books=" + books+ "]";
 	}
 
 	

@@ -13,9 +13,9 @@ public class Book {
 	
 	private String Bname;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL)
 //	@JoinColumn(name="a_ids")
-	private Author authors;
+	private List<Author> authors = new ArrayList<>();
 	
 	public int getBid() {
 		return bid;
@@ -35,11 +35,11 @@ public class Book {
 	
 	
 
-	public	Author getAuthors() {
+	public	List<Author> getAuthors() {
 		return  authors;
 	}
 
-	public void setAuthors(Author authors) {
+	public void setAuthors(List<Author> authors) {
 		this.authors = authors;
 	}
 
